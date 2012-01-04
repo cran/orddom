@@ -1,0 +1,13 @@
+efa6da19b68e928519b69a0bde2fdb4e *DESCRIPTION
+e8421fe776244089c0b5353260a37904 *NAMESPACE
+4947cc5b29c6e5e93289a575ff6f4e7a *R/cohd2delta.R
+f1f2946e88eea4721a13120603510d17 *R/delta2cohd.R
+9bf68a355bfef63bf3c955c9f4e26d5a *R/dm.R
+0fe74ff4aa863d3a62e49b009ba2a48b *R/dms.R
+9cc02071923acb00b720d00963436e1d *R/orddom.R
+960da5eefe85cfd2358328d3f75606af *man/cohd2delta.Rd
+65cb230621b52e16fb81aa7c5724bf84 *man/delta2cohd.Rd
+696eef836ccf83830cf3ebcbaf0e1217 *man/dm.Rd
+14644202785e8c3171bbecf1bd468f3e *man/dms.Rd
+6c2b252ecb37bf6f0dd18942005e9ab6 *man/orddom-package.Rd
+b617ff1da50897f615e18a029b7692c7 *man/orddom.Rd
