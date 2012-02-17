@@ -1,0 +1,17 @@
+Changes to Version 2.0 (2012-02-17)
++ orddom now also accepts simple vectors as x or y
++ New orddom_f() function file allows for file output of statistics for multiple sample comparisons (e.g. csv or analyses in MS Excel or Open Office Calc).
++ New orddom_p() function file allows for detailed tab-formatted output for single sample comparisons.
++ Package dependency on compute.es package suspended (tes-Function for metric Cohen's d in orddom).
++ New metric_t() function for additional information on metric t-test results.
++ The dm() function can now also return difference matrices.
++ Improved stability of orddom function as well as minor corrections (e.g. PS Indep Samples) in orddom output and manuals (e.g. labeling of experimental and control groups).
+
+Changes from orddom Version 1.0 (2010-12-28) to 1.5(2012-01-04)
++ Calculation of CI and delta z-score-estimates can now be based on Students t-distribution rather than using fixed normal distribution z-scores.
++ Symmetric CIs can now be obtained to increase power of the delta statistics in certain cases.
++ Formulas used for calculation added in orddom manual.
++ Probability of Superiority statistic as well as variance estimates for delta in the independent groups analyses were corrected.
++ Minor changes were implemented to allow for calculation of \eqn{d = \pm 1}{d=+-1} extreme cases without error abort.
++ Output of raw y-dataset in independent group analysis was corrected.
++ Dependencies on packages \emph{psych} and \emph{compute.es} declared in DESCRIPTION and NAMESPACE files.

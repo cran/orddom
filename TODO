@@ -1,0 +1,9 @@
+Geänderte und neu erschaffene Dateien, vor jeder weiteren Änderung manuell einlesen:
+- dm.R
+- metric_t.R
+- orddom.R
+- orddom_p.R
+- orddom_f.R
+
+To do:
++ orddom.R verschlanken durch posttest<-dm

@@ -1,11 +1,10 @@
 #NAMESPACE file for orddom
-#orddom version 1.5, for R versions 2.14.0 and above
+#orddom version 2.0, for R versions 2.14.0 and above
 
 # Export all names
 exportPattern(".")
 
 # Import all packages listed as Imports or Depends
 import(
-  psych,
-  compute.es
+  psych
 )

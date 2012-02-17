@@ -4,17 +4,18 @@
 \docType{package}
 \title{Ordinal Dominance Statistics}
 \description{
-This package provides ordinal statistics as an alternative to independent or paired group mean comparisons, especially for Cliff's delta statistics.
+This package provides ordinal statistics and effect sizes as an alternative to independent or paired group mean comparisons, with special reference to Cliff's delta statistics, but also providing McGraw and Wong's common language effect size, Grissom and Kim's probability of superiority, and Vargha and Delaney's A.
 }
 \details{
 \tabular{ll}{
 Package: \tab anRpackage\cr
 Type: \tab Package\cr
-Version: \tab 1.5\cr
-Date: \tab 2012-01-02\cr
+Version: \tab 2.0\cr
+Date: \tab 2012-02-17\cr
 License: \tab GPL-2\cr
 }
 }
+\seealso{\code{\link{orddom}}, \code{\link{orddom_p}} and \code{\link{orddom_f}}.}
 \author{
 Jens J. Rogmann, University of Hamburg, Dept of Psychology, Germany
 Maintainer: Jens J. Rogmann <Jens.Rogmann@uni-hamburg.de>
@@ -36,8 +37,13 @@ Vargha, A., & Delaney, H. D. (1998). The Kruskal-Wallis test and stochastic homo
 Vargha, A., & Delaney, H. D. (2000). A critique and improvement of the CL common language effect size statistic of McGraw and Wong. \emph{Journal of Educational and Behavioral Statistics, 25}, 101-132.\cr \cr
 }
 \examples{\dontrun{
-#orddom (x,y,paired=FALSE) provides delta statistics for independent groups x and y
-#orddom (x,y,paired=TRUE) provides delta statistics for paired data (e.g. x:Pre and y:Post)
+#ordinal comparison and delta statistics for independent groups x and y 
+#(e.g. x:comparison/control group and y:treatment/experimental group)
+orddom (x,y,paired=FALSE) 
+#
+#ordinal comparison and delta statistics for paired data 
+#(e.g. x:Pretest/Baseline and y:Posttest)
+orddom (x,y,paired=TRUE)  
 }}
 \keyword{nonparametric}
 \keyword{robust}

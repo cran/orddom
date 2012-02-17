@@ -1,13 +1,16 @@
 Package: orddom
 Type: Package
 Title: Ordinal Dominance Statistics
-Version: 1.5
-Date: 2012-01-04
-Author: Jens J. Rogmann, University of Hamburg, Department of Psychology, Germany
+Version: 2.0
+Date: 2012-02-17
+Author: Jens J. Rogmann, University of Hamburg, Department of
+        Psychology, Germany
 Maintainer: Jens J. Rogmann <Jens.Rogmann@uni-hamburg.de>
-Description: Computes ordinal alternatives to mean comparison (Cliff's Delta)
-Depends: psych, compute.es
+Description: Computes ordinal alternatives to mean comparison (Cliff's
+        Delta, Vargha and Delaney's A, Common Language Effect Size /
+        Probability of Superiority, etc.)
+Depends: psych
 License: GPL-2
-Packaged: 2012-01-04 13:15:59 UTC; jens
+Packaged: 2012-02-28 10:48:07 UTC; jens
 Repository: CRAN
-Date/Publication: 2012-01-04 13:57:43
+Date/Publication: 2012-02-28 14:57:22

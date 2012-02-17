@@ -4,10 +4,11 @@
 \description{Returns an array of ordinal dominance statistics based on the input of two 1-column matrices as an alternative to independent or paired group mean comparisons (especially for Cliff's delta statistics).}
 \usage{orddom(x,y,alpha=.05,paired=FALSE,outputfile="",studdist=TRUE,symmetric=FALSE)}
 \arguments{
-  \item{x}{A 1-column matrix with optional column name containing all \eqn{n_x} values or scores of group X or 1 (e.g. experimental or pretest group.), e.g. declared in R as\cr
+  \item{x}{A 1-column matrix with optional column name containing all \eqn{n_x} values or scores of group X or 1 (e.g. control or pretest group.), e.g. declared in R as\cr
   \emph{x<-t(matrix(c(\eqn{x_1,x_2,x_3,x_4, \ldots , x_{n_x}}),1))\cr
-colnames(x)<-c("[label of group X]").}}
-  \item{y}{A 1-column matrix with optional column name containing all \eqn{n_y} values of group Y or 2 (e.g. comparison or post-test group). For paired comparisons (e.g. pre-post), \eqn{n_x = n_y} is required.}
+colnames(x)<-c("[label of group X]").}\cr
+If x is a vector, a default column name is assigned.}
+  \item{y}{A 1-column matrix with optional column name containing all \eqn{n_y} values of group Y or 2 (e.g. experimental or post-test group). For paired comparisons (e.g. pre-post), \eqn{n_x = n_y} is required. If y is a vector, a default column name is assigned.}
   \item{alpha}{Significance or \eqn{\alpha}-level used for the calculation of the confidence intervals. Default value is \eqn{\alpha = .05} or 5 Percent, giving a 95 Percent CI. For multiple dominance comparisons, a Bonferroni procedure may be implemented: Cliff (1996, p.150) suggested dividing \eqn{\alpha} by the number of possible comparisons, i.e. \eqn{\alpha (\frac{1}{2}k(k-1))^{-1}}{alpha / (.5*k(k-1))} for comparisons beteen \eqn{k} data sets.}
   \item{paired}{By default, independence of the two groups or data sets is assumed. If the number of cases in x and y are equal and paired (e.g. pre-post) comparisons, this should be set to TRUE to return the full array of within, between, combined and metric delta statistics.}
   \item{outputfile}{If a a detailed report of the ordinal dominance analysis is wanted, a filename should be given here. The report as standard text file is written to the current working directory.}
@@ -15,7 +16,7 @@ colnames(x)<-c("[label of group X]").}}
   \item{symmetric}{By default, asymmetric confidence intervals (CI) are being calculated to compensate for positive correlations between the samples as generally recommended by the literature on the delta statistics. To increase power in certain cases, however, (e.g. in small paired samples, cf. Cliff 1996, p. 165), symmetric CIs may also be obtained by setting this argument to TRUE.\cr \cr \cr}
 } 
 \value{\strong{INDEPENDENT GROUPS} (\emph{paired} argument set to FALSE)\cr \cr
-In the case of independent groups or data sets X and Y (e.g. treatment group vs. comparison group), a 2-column-matrix containing 29 rows with values is returned.\cr \cr
+In the case of independent groups or data sets X and Y (e.g. comparison group X vs. treatment group Y), a 2-column-matrix containing 29 rows with values is returned.\cr \cr
 The ordinal statistics can be retrieved from the first column (named "ordinal") while the second column (named "metric") contains metric comparison data where appropriate.\cr \cr
 \item{[1  \emph{or} ["var1_X", \emph{col#}]}{Original column name of the x input matrix.}
 \item{[2  \emph{or} ["var2_Y", \emph{col#}]}{Original column name of the y input matrix.}
@@ -25,8 +26,8 @@ The ordinal statistics can be retrieved from the first column (named "ordinal") 
 \item{[6  \emph{or} ["N #Y>X", \emph{col#}]}{Number of occurences of an observation from group y having a higher value than an observation from group x when comparing all x scores with all y scores: \eqn{N_{\#Y>X}=\#(y_i>x_j) ,} where \# denotes "the number of times" whilst comparing each \eqn{i=1, 2, 3, \ldots n_y} score in sample Y with each \eqn{j=1, 2, 3, \ldots n_x} score in sample X (resulting in \eqn{n_x \cdotp n_y}{(n_x)(n_y)} comparisons).}
 \item{[7  \emph{or} ["N #Y=X", \emph{col#}]}{Number of occurences of an observation from group y having the same value as an observation from group x: \eqn{N_{\#Y=X}=\#(y_i=x_j)}.}
 \item{[8  \emph{or} ["N #Y<X", \emph{col#}]}{Number of occurences of an observation from group y having a smaller value than an observation from group x: \eqn{N_{\#Y<X}=\#(y_i<x_j)}.}
-\item{[9  \emph{or} ["PS X>Y", \emph{col#}]}{Common Language CL effect size or Probability of Superiority (PS) of X over Y; \deqn{PS(Y>X)=\frac{\#(y_i>x_j)}{n_y \cdotp n_x}}{PS(Y>X)=\#(y_i>x_j)/(n_y n_x)} (cf. Grissom, 1994; Grissom & Kim, 2005).}
-\item{[10  \emph{or} ["PS Y>X", \emph{col#}]}{Common Language CL effect size or Probability of Superiority (PS) of Y over X.}
+\item{[9  \emph{or} ["PS X>Y", \emph{col#}]}{Common Language CL effect size or Probability of Superiority (PS) of X over Y, see below.}
+\item{[10  \emph{or} ["PS Y>X", \emph{col#}]}{Common Language CL effect size or Probability of Superiority (PS) of Y over X; \deqn{PS(Y>X)=\frac{\#(y_i>x_j)}{n_y \cdotp n_x}}{PS(Y>X)=\#(y_i>x_j)/(n_y n_x)} (cf. Grissom, 1994; Grissom & Kim, 2005).}
 \item{[11  \emph{or} ["A X>Y", \emph{col#}]}{Vargha and Delaney's A as stochastic superiority of X over Y, calculated as \deqn{A_{X>Y} = PS(X>Y)+.5 PS(X=Y)}{A(X>Y) = PS(X>Y)+.5 PS(X=Y)} (cf. Vargha & Delaney, 1998, 2000; Delaney & Vargha, 2002).}
 \item{[12  \emph{or} ["A Y>X", \emph{col#}]}{Vargha and Delaney's A as stochastic superiority of Y over X.}
 \item{[13  \emph{or} ["delta", \emph{col#}]}{For column 1 ("ordinal"): Cliff's delta for independent groups (Cliff, 1996; Long et al., 2003):\deqn{d=\frac{\#(y_i>x_j)-\#(y_i<x_j)}{n_y \cdotp n_x}=\frac{\sum_{i} \sum_{j} d_{ij}}{n_y \cdotp n_x}}{d=SUM(SUM(d_ij))/(n_x*n_y)} where \eqn{d_{ij}=sign(y_i-x_j)}{d_ij=sign(y_i-x_j)} across all score comparisons.\cr \cr
@@ -51,11 +52,11 @@ Column 2 contains the pooled \eqn{s_{xy}^{2}}{s_xy^2}.\cr}
 Column 2: Metric z/t-score (= \eqn{\bar{d_{ij}}/SE_{xy}}{M(d_ij) / SE_xy}).}
 \item{[21  \emph{or} ["p (1-tail)", \emph{col#}]}{Probability of z/t score (1 tailed comparison).}
 \item{[22  \emph{or} ["p (2-tail)", \emph{col#}]}{Probability of z/t score (2-tailed comparison).}
-\item{[23  \emph{or} ["Cohen's \emph{d}", \emph{col#}]}{Cohen's \emph{d} effect size estimate of delta. For Cliff's delta inferred from distributional non-overlap as suggested by Grissom & Kim (2005, p. 106 f.) as well as Romano, Kromrey, Coraggio, & Skowronek (2006, p. 14-15), relating to the relative positions of the distributions of X and Y. When Cliff's delta equals 0, there is no effect, and the Y and X distributions overlap completely. If there are effects, a certain percentage of non-overlap between X and Y is created, and the relative positions of the X and Y distribtions shift. The degree of non-overlap thus is a measure of effect size and is expressed as Cohen's \emph{d} in terms of non-overlap between two normal distributions (based on U1 in Table 2.2.1, Cohen, 1988, p.22). See delta2cohd manual of orddom package.}
+\item{[23  \emph{or} ["Cohen's \emph{d}", \emph{col#}]}{Cohen's \emph{d} effect size estimate of delta. For Cliff's delta inferred from distributional non-overlap as suggested by Grissom & Kim (2005, p. 106 f.) as well as Romano, Kromrey, Coraggio, & Skowronek (2006, p. 14-15), relating to the relative positions of the distributions of X and Y. When Cliff's delta equals 0, there is no effect, and the Y and X distributions overlap completely. If there are effects, a certain percentage of non-overlap between X and Y is created, and the relative positions of the X and Y distribtions shift. The degree of non-overlap thus is a measure of effect size and is expressed as Cohen's \emph{d} in terms of non-overlap between two normal distributions (based on U1 in Table 2.2.1, Cohen, 1988, p.22). See \code{\link{delta2cohd}} manual of orddom package.}
 \item{[24  \emph{or} ["d CI low", \emph{col#}]}{Cohen's \emph{d} effect size estimate of lower boundary of confidence interval.}
 \item{[25  \emph{or} ["d CI high", \emph{col#}]}{Cohen's \emph{d} estimate of upper boundary of confidence interval.}
-\item{[26  \emph{or} ["var d.i", \emph{col#}]}{Row variance of dominance/difference matrix, calculated as \cr \eqn{(n_x-1)^{-1} \sum (d_{i\cdot}-d)^2}{SUM((di.-d)^2)/(n_x-1)}.}
-\item{[27  \emph{or} ["var dj.", \emph{col#}]}{Column variance of dominance/difference matrix, calculated as \cr \eqn{(n_y-1)^{-1} \sum (d_{\cdot j}-d)^2}{SUM((d.j-d)^2)/(n_y-1)}.}
+\item{[26  \emph{or} ["var d.i", \emph{col#}]}{Row variance of dominance/difference matrix, calculated as \cr \eqn{(n_x-1)^{-1} \sum (d_{i\cdot}-d)^2}{SUM((di.-d)^2)/(n_x-1)}. The metric descriptive in column 2 is the variance of x (or \eqn{s_{x}^{2}}{s_x^2}).}
+\item{[27  \emph{or} ["var dj.", \emph{col#}]}{Column variance of dominance/difference matrix, calculated as \cr \eqn{(n_y-1)^{-1} \sum (d_{\cdot j}-d)^2}{SUM((d.j-d)^2)/(n_y-1)}. The metric descriptive in column 2 is the variance of y (or \eqn{s_{y}^{2}}{s_y^2}).}
 \item{[28  \emph{or} ["var dij", \emph{col#}]}{Variance of dominance/difference matrix as sample estimate according to Long et al. (2003, section 3.3 before eqn. 67):\deqn{s_{d_{ij}}^{2}=\frac{\sum \sum(d_{ij}-d)^{2}}{n_x n_y -1}=\frac{\sum d_{ij}^{2} - \frac{(\sum d_{ij})^{2}}{n_x n_y}}{n_x n_y -1},}{s_d_ij=SUM(SUM((d_ij-d)^2))/(n_x*n_y-1),} thus avoiding Cliff's original (1996, p. 138) suggestion to use \eqn{(n_x-1)(n_y-1)} as the denominator).}
 \item{[29  \emph{or} ["df", \emph{col#}]}{If the \emph{studdist} parameter is not set to FALSE, column 1 returns the degrees of freedom (\eqn{df}) used for CI as well as z/t-score and z-probability estimates. \cr
 In column 2 ("metric") df as used for metric t-test.
@@ -116,11 +117,11 @@ Column 4 reports the metric variance of the paired (within) differences. \cr \cr
 \item{[17  \emph{or} ["z/t score", \emph{col#}]}{z score of delta. In column 4 ("metric") equal to the t-test score.}
 \item{[18  \emph{or} ["p (1-tail)", \emph{col#}]}{Probability of z-score (1-tailed comparison).}
 \item{[19  \emph{or} ["p (2-tail)", \emph{col#}]}{Probability of z-score (2-tailed comparison).}
-\item{[20  \emph{or} ["Cohen's \emph{d}", \emph{col#}]}{Cohen's \emph{d} estimate of the respective delta value (see above). \cr Not available for the combined delta in column 3.}
+\item{[20  \emph{or} ["Cohen's \emph{d}", \emph{col#}]}{Cohen's \emph{d} estimate of the respective delta value (see above). In the metric case, the between group t-value and the original standard deviations are also used for the paired case to avoid overestimation of the effect size (Dunlap et al., 1996). See \code{\link{delta2cohd}} for details.\cr Not available for the combined delta in column 3.}
 \item{[21  \emph{or} ["d CI low", \emph{col#}]}{Cohen's \emph{d} estimate of lower boundary of the respective confidence interval. \cr Not available for the combined delta in column 3.}
 \item{[22  \emph{or} ["d CI high", \emph{col#}]}{Cohen's \emph{d} estimate of lower boundary of the respective confidence interval. \cr Not available for the combined delta in column 3.}
-\item{[23,3] \emph{or} ["var d.i",\emph{combined}]}{Component of \eqn{s_{d_w+d_b}^2}: \eqn{s_{di.}^2} (Available for the combined analyses in column 3 only.)}
-\item{[24,3] \emph{or} ["var dj.",\emph{combined}]}{Component of \eqn{s_{d_w+d_b}^2}: \eqn{s_{d.i}^2} (Third column only.)}
+\item{[23,3] \emph{or} ["var d.i",\emph{combined}]}{Component of \eqn{s_{d_w+d_b}^2}: \eqn{s_{di.}^2} (Available for the combined analyses in column 3 only.) The metric descriptive in column 4 is the variance of x (or \eqn{s_{x}^{2}}{s_x^2}.}
+\item{[24,3] \emph{or} ["var dj.",\emph{combined}]}{Component of \eqn{s_{d_w+d_b}^2}: \eqn{s_{d.i}^2} (Third column only.) The metric descriptive in column 4 is the variance of y (or \eqn{s_{y}^{2}}{s_y^2}.}
 \item{[25,3] \emph{or} ["cov(di,dj)",\emph{combined}]}{Component of \eqn{s_{d_w+d_b}^2}: \eqn{cov(d_{i.},d_{.j})} (Third column only.)}
 \item{[26,3] \emph{or} ["var dij",\emph{combined}]}{Component of \eqn{s_{d_w+d_b}^2}: \eqn{s_{d_{ij}}^2} (Third column only.)}
 \item{[27,3] \emph{or} ["cov(dih,dhi)",\emph{combined}]}{Component of \eqn{s_{d_w+d_b}^2}: \eqn{cov(d_{ih},d_{hi})} (Third column only.)}
@@ -130,6 +131,7 @@ Column 2 returns Welch's \emph{df} for the metric t-test for dependent samples.}
 }
 \references{Cliff, N. (1996). \emph{Ordinal Methods for Behavioral Data Analysis}. Mahwah, NJ: Lawrence Erlbaum.\cr \cr
 Cohen, J. (1988). \emph{Statistical power analysis for the behavioral sciences (2nd edition)}. New York: Academic Press.\cr \cr
+Dunlap, W. P., Cortina, J. M., Vaslow, J. B., & Burke, M. J. (1996). Meta-analysis of experiments with matched groups or repeated measures designs. \emph{Psychological Methods, 1}, 170-177.\cr \cr
 Feng, D. (2007). Robustness and Power of Ordinal d for Paired Data. In Shlomo S. Sawilowsky (Ed.), \emph{Real Data Analysis} (pp. 163-183). Greenwich, CT : Information Age Publishing.\cr \cr
 Feng, D., & Cliff, N. (2004). Monte Carlo Evaluation of Ordinal d with Improved Confidence Interval. \emph{Journal of Modern Applied Statistical Methods, 3}(2), 322-332.\cr \cr
 Long, J. D., Feng, D., & Cliff, N. (2003). Ordinal analysis of behavioral data. In J. Schinka & W. F. Velicer (eds.), \emph{Research Methods in Psychology. Volume 2 of Handbook of Psychology} (I. B. Weiner, Editor-in-Chief). New York: John Wiley & Sons.\cr \cr
@@ -141,7 +143,16 @@ Romano, J., Kromrey, J. D., Coraggio, J., & Skowronek, J. (2006). \emph{Appropri
 Vargha, A., & Delaney, H. D. (1998). The Kruskal-Wallis test and stochastic homogeneity. \emph{Journal of Educational and Behavioral Statistics, 23}, 170-192.\cr \cr
 Vargha, A., & Delaney, H. D. (2000). A critique and improvement of the CL common language effect size statistic of McGraw and Wong. \emph{Journal of Educational and Behavioral Statistics, 25}, 101-132.\cr \cr
 }
-\note{\emph{Major changes from orddom Version 1.0 to 1.5}
+\note{\emph{Major changes from orddom Version 1.5 to 2.0}
+\itemize{
+\item{orddom now also accepts simple vectors as x or y.}
+\item{New orddom_f() function file allows for file output of statistics for multiple sample comparisons (e.g. csv or analyses in MS Excel or Open Office Calc).}
+\item{New orddom_p() function file allows for detailed tab-formatted output for single sample comparisons.}
+\item{Package dependency on compute.es package was suspended (tes-Function for metric Cohen's d in orddom).}
+\item{New metric_t() function for additional information on metric t-test results.}
+\item{The dm() function can now also return difference matrices.}
+\item{Improved stability of orddom function as well as minor corrections in orddom output and manuals. \cr }}
+\emph{Major changes from orddom Version 1.0 to 1.5}
 \itemize{
 \item{Calculation of CI and delta z-score-estimates can now be based on Students t-distribution rather than using fixed normal distribution z-scores.}
 \item{Symmetric CIs can now be obtained to increase power of the delta statistics in certain cases.}
@@ -151,6 +162,9 @@ Vargha, A., & Delaney, H. D. (2000). A critique and improvement of the CL common
 \item{Output of raw y-dataset in independent group analysis was corrected.}
 \item{Dependencies on packages \emph{psych} and \emph{compute.es} declared in DESCRIPTION and NAMESPACE files.}
 }}
+\seealso{
+       \code{\link{orddom_f}} and \code{\link{orddom_p}}.
+     }
 \author{Jens J. Rogmann, University of Hamburg, Department of Psychology, \cr Hamburg, Germany (Jens.Rogmann@uni-hamburg.de)}
 \examples{\dontrun{
 #Independent Samples (Data taken from Long et al. (2003), Table 4}
@@ -158,18 +172,17 @@ x<-t(matrix(c(3,3,3,4,5,6,12,12,13,14,15,15,15,15,15,16,18,18,18,23,23,27,28,28,
 colnames(x)<-c("Nonalcohol.")
 y<-t(matrix(c(1,4,6,7,7,14,14,18,19,20,21,24,25,26,26,26,27,28,28,30,33,33,44,45,50),1))
 colnames(y)<-c("Alcoholic")
-orddom(x,y,,paired=FALSE,"tmp_r.txt",,)
+orddom(x,y,paired=FALSE,outputfile="tmp_r.txt")
 \dontrun{
-#Paired Comparison with CSV-Output (Data taken from Long et al. (2003), Table 4}
+#Paired Comparison with data written to file (Data taken from Long et al. (2003), Table 4}
 x<-t(matrix(c(2,6,6,7,7,8,8,9,9,9,10,10,10,11,11,12,13,14,15,16),1))
 colnames(x)<-c("Incidental")
 y<-t(matrix(c(4,11,8,9,10,11,11,5,14,12,13,10,14,16,14,13,15,15,16,10),1))
 colnames(y)<-c("Intentional")
-write.table(orddom(y,x,,TRUE,,FALSE,TRUE),"tmp_r.txt",quote=TRUE,sep=",",dec=",",eol=";\n")
+orddom_f(y,x,paired=TRUE,symmetric=FALSE)
 \dontrun{
 #Directly returns d_b of the paired comparison}
 orddom(x,y,,TRUE,,,)[11,2]}
 \keyword{nonparametric}
 \keyword{robust}
 \keyword{htest}
-
