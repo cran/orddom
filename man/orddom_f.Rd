@@ -2,18 +2,14 @@
 \alias{orddom_f}
 \title{Ordinal Dominance Statistics: File output of statistics for multiple comparisons}
 \description{Writes ordinal dominance statistics to tailored target output file, e.g. for purposes of multiple comparisons.}
-\usage{orddom_f(x,y,alpha=0.05,paired=FALSE,outputfile="orddom_csv.txt",studdist=TRUE,
-       symmetric=FALSE,quotechar=TRUE,decimalpt=".",separator="\t",
-       notavailable="NA",endofline="\n",description="NA")}
+\usage{orddom_f(x,y, ... ,outputfile="orddom_csv.txt",quotechar=TRUE,decimalpt=".",
+                separator="\t",notavailable="NA",endofline="\n")}
 \arguments{
   \item{x}{A 1-column matrix with optional column name containing all \eqn{n_x} values or scores of group X or 1 (e.g. control or pretest group.); see \code{\link{orddom}} for details.}
   \item{y}{A 1-column matrix with optional column name containing all \eqn{n_y} values of group Y or 2 (e.g. treatment or post-test group); see \code{\link{orddom}} for details.}
-  \item{alpha}{Significance or \eqn{\alpha}-level used for the calculation of the confidence intervals; see \code{\link{orddom}} for details.}
-  \item{paired}{By default, independence of the two groups or data sets is assumed. For paired comparisons, set to TRUE; see \code{\link{orddom}} for details.}
+  \item{...}{Other arguments to be passed on to the \code{\link{orddom}} function (such as e.g. \emph{paired, studdist, symmetric, x.name, description} etc.; see \code{\link{orddom}} for details.)}
   \item{outputfile}{A filename for the report should be given here. The report as standard text file is written to the current working directory. All data are appended to this file. 
   If the file does not exist initially, row headers are produced.}
-  \item{studdist}{By default, z-values are based on Student's t-distribution. Set to FALSE if z-values should be based on the Standard Normal Distribution; see \code{\link{orddom}} for details.}
-  \item{symmetric}{By default, asymmetric confidence intervals (CI) are being calculated for delta statistics. Set to TRUE to have symmetric CIs returned; see \code{\link{orddom}} for details.}
   \item{quotechar}{By default, string outputs are quoted.}
   \item{decimalpt}{By default, numeric outputs use the colon as decimal point. Where commas are used instead, this argument should be set to \emph{...,decimalpt=",",...} .}
   \item{separator}{By default, field entries are separated by tabulators (\emph{...,separator="\\tab",...}). 
@@ -21,9 +17,7 @@
   \item{notavailable}{By default, if field entries are ot available, \emph{"NA"} is printed to the file. 
   Other values to be printed can be given, e.g. \emph{...,notavailable="",...} or \emph{...,notavailable="NULL",...}.} 
   \item{endofline}{By default, a carriage return denotes the end of the single output line. 
-  Other values may be given, such as the IETF standard for csv files (\emph{...,endofline="\\r\\n",...}).}
-  \item{description}{A string description can be given to give even more details about the very comparison and statistics written to the file. 
-  This information is then also written to the file.\cr \cr \cr}
+  Other values may be given, such as the IETF standard for csv files (\emph{...,endofline="\\r\\n",...}). \cr }
 } 
 \seealso{\code{\link{orddom}}}
 \author{Jens J. Rogmann, University of Hamburg, Department of Psychology, \cr Hamburg, Germany (Jens.Rogmann@uni-hamburg.de)}

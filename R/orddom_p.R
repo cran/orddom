@@ -1,4 +1,4 @@
-orddom_p <- function (x,y,alpha=.05,paired=FALSE,sections="1234a4b5a5b",header="Y",sorted="XY",outfile="orddom_csv_tab.txt",appendfile=FALSE,show=1) { 
+orddom_p <- function (x,y,alpha=.05,paired=FALSE,sections="1234a4b5a5b",header="Y",sorted="XY",outfile="orddom_csv_tab.txt",appendfile=FALSE,show=1,description="") { 
 #prints tab-delimited output of character matrix from dominance matrix with signs
 #General settings
 library(psych)
@@ -18,7 +18,9 @@ if(paired==FALSE){
 } 
  x_name<-gsub("(^ +)|( +$)", "", x_name)
  y_name<-gsub("(^ +)|( +$)", "", y_name)
+
 if (header=="Y"){
+if (description!="") { cat("***** ",description," *****\n",sep="",append=TRUE) }
 cat("===== ORDINAL DOMINANCE ANALYSIS FOR ",x_head," =====",sep="",append=TRUE)
 }
 if(any(grep("[1]",sections))){

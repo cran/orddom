@@ -1,3 +1,18 @@
+Changes to Version 3.0. (2012-04-21)
++ New function dmes to easily calculate nonparametric effect size measures independently from orddom
++ Easier and more reliable input possible (vectors, lists, arrays, data frames) (by means of new function return1colmatrix)
++ Individual variable label and test descriptions can now be assigned
++ Outputs now also contain Number Needed to Treat (NNT) effect size
++ (Para)metric Common Language effect size McGraw & Wong (1992) added
++ Metric d CI in orddom now based on Hedges & Olkin (1985)
++ Elimination of negative delta-between variance estimates for paired comparisons
++ Correction of symmetric CI for independent Cliff's delta statistics
++ New function dmes.boot to calculate bootstrap-based CI for nonparametric effect size measures and Cohen's d,
++ dmes.boot was largely based on R code provided by J. Ruscio and T. Mullen (2011) reused with kind permission
++ New function delta_gr now yields a graphical and interpretational output for Cliff's delta statistic
++ New options for one- and two-tailed CI in orddom and orddom_f, resulting in changes of rows 21+22 of independent and rows 18+19 of paired orddom result matrix
++ Metric t: t, p and df can now be calculated and embedded in orddom as standard or Welch approximated
+
 Changes to Version 2.0 (2012-02-17)
 + orddom now also accepts simple vectors as x or y
 + New orddom_f() function file allows for file output of statistics for multiple sample comparisons (e.g. csv or analyses in MS Excel or Open Office Calc).

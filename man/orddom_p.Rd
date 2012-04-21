@@ -3,7 +3,7 @@
 \title{Ordinal Dominance Matrices and Statistics: Printer-friendly Tab-Delimited Report Output File}
 \description{Generates a sectioned report file with ordinal dominance matrices and statistics.}
 \usage{orddom_p(x,y,alpha=.05,paired=FALSE,sections="1234a4b5a5b",header="Y",sorted="XY",
-       outfile="orddom_csv_tab.txt",appendfile=FALSE,show=1)}
+       outfile="orddom_csv_tab.txt",appendfile=FALSE,show=1,description="")}
 \arguments{
   \item{x}{A 1-column matrix with optional column name containing all \eqn{n_x} values or scores of group X or 1 (e.g. control or pretest group.); see \code{\link{orddom}} for details.}
   \item{y}{A 1-column matrix with optional column name containing all \eqn{n_y} values of group Y or 2 (e.g. experimental or post-test group); see \code{\link{orddom}} for details.}
@@ -22,7 +22,8 @@ The following sections are available for output:\cr
   \item{sorted}{All outputs in sections 1,4a,4b,5a and 5b may be automatically sorted ascendingly for the x data set (string is to contain "X") and/or for the y data set (string is to contain "Y"). This is the default option.}
   \item{outfile}{A filename for the report should be given here. The report as standard text file is written to the current working directory.}
   \item{appendfile}{By default, new report files are created. If a given report file ist to be appended, set to TRUE.}
-  \item{show}{By default, the generated file is displayed. Set to FALSE to avoid the resulting file to be shown.\cr \cr \cr}
+  \item{show}{By default, the generated file is displayed. Set to FALSE to avoid the resulting file to be shown.}
+  \item{description}{This argument allows for assigning a string (as title or description) for the ordinal comparison outputs. \cr \cr \cr}  
 } 
 \seealso{
        \code{\link{orddom}}.
