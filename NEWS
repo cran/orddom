@@ -1,3 +1,6 @@
+Changes to Version 3.1. (2013-02-04)
++ Correction of dmes list names
+
 Changes to Version 3.0. (2012-04-21)
 + New function dmes to easily calculate nonparametric effect size measures independently from orddom
 + Easier and more reliable input possible (vectors, lists, arrays, data frames) (by means of new function return1colmatrix)

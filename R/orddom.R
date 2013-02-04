@@ -40,19 +40,19 @@ da[8,1] <- sum(as.numeric(-dom==-1))
   }
 #Probability of Superiority/Common Language ES
 #cf. Grissom, RJ & Kim, JJ (2005). Effect sizes for reseach: A broad practical approach. Mahwah, NJ, USA: LEA.
-da[9,1]<- data.matrix(da[8,1])/sum(da[6:8,1]) #(eq. 5.1 p. 98)
-da[10,1]<- data.matrix(da[6,1])/sum(da[6:8,1])
+da[9,1]<-  dmes(y,x)$PSc # data.matrix(da[8,1])/sum(da[6:8,1])#(eq. 5.1 p. 98) PS(X>Y)
+da[10,1]<- dmes(x,y)$PSc #data.matrix(da[6,1])/sum(da[6:8,1]) # PS(Y>X)
 #cf. McGraw & Wong (1992), p. 361 for parametric CL
 da[9,2]<- pnorm((mean(x)-mean(y))/(sqrt((var(x)+var(y)))))
 da[10,2]<- pnorm((mean(y)-mean(x))/(sqrt((var(x)+var(y)))))
 for (i in 1:2) { 
 #cf. Vargha, A. & Delaney, H. (2000). A critique and improvement of the CL common language effect size statistics of McGraw and Wong. Journal of Educational and Behavioral Statistics 25(2), 101-132.
-da[11,i]<-(da[8,i]+(.5*da[7,i]))/sum(da[6:8,i]) #(eq. 51, p. 127)
-da[12,i]<-(da[6,i]+(.5*da[7,i]))/sum(da[6:8,i])
+da[11,i]<- dmes(y,x)$Ac  #(da[8,i]+(.5*da[7,i]))/sum(da[6:8,i]) #(eq. 51, p. 127)
+da[12,i]<- dmes(x,y)$Ac  #(da[6,i]+(.5*da[7,i]))/sum(da[6:8,i])
   }
 #t-test
 t_t<-matrix (nrow =5,ncol=1)
-t_t<-metric_t(x,y,signlev,FALSE,t.welch) #equal samplke sizes assumed
+t_t<-metric_t(x,y,signlev,FALSE,t.welch) #equal sample sizes assumed
 #Berechnungen Dominance Analysis
 dw<-mean(dom)
 kw<-mean(prepost)

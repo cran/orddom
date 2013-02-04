@@ -4,13 +4,14 @@
 \docType{package}
 \title{Ordinal Dominance Statistics}
 \description{
-This package provides ordinal, nonparametric statistics and effect sizes as an alternative to independent or paired group mean comparisons, with special reference to Cliff's delta statistics (or success rate difference, SRD), but also providing McGraw and Wong's common language effect size for the discrete case (i.e. Grissom and Kim's Probability of Superiority), Vargha and Delaney's A (or the Area Under a Receiver Operating Characteristic Curve AUC), and Cook & Sackett's number needed to treat (NNT) effect size (cf. Kraemer & Kupfer, 2006). For the nonparametric effect sizes, various bootstrap CI estimates may also be obtained.}
+This package provides ordinal, nonparametric statistics and effect sizes as an alternative to independent or paired group mean comparisons, with special reference to Cliff's delta statistics (or success rate difference, SRD), but also providing McGraw and Wong's common language effect size for the discrete case (i.e. Grissom and Kim's Probability of Superiority), Vargha and Delaney's A (or the Area Under a Receiver Operating Characteristic Curve AUC), and Cook & Sackett's number needed to treat (NNT) effect size (cf. Kraemer & Kupfer, 2006). For the nonparametric effect sizes, various bootstrap CI estimates may also be obtained. Nonparametric effect sizes are also expressed as Cohen's d based on percentages of group non-overlap (cf. Huberty & Lowman, 2000).
+}
 \details{
 \tabular{ll}{
 Package: \tab anRpackage\cr
 Type: \tab Package\cr
-Version: \tab 3.0\cr
-Date: \tab 2012-04-21\cr
+Version: \tab 3.1\cr
+Date: \tab 2013-02-07\cr
 License: \tab GPL-2\cr
 }}
 \seealso{\code{\link{orddom}}, \code{\link{dmes}}, \code{\link{dmes.boot}} and \code{\link{orddom_f}}.}
@@ -20,7 +21,11 @@ Maintainer: Jens J. Rogmann <Jens.Rogmann@uni-hamburg.de>
 }
 \note{
 Please cite as: \cr \cr
-Rogmann, J. J. (2012). \emph{Ordinal Dominance Statistics (orddom): An R Project for Statistical Computing package to compute ordinal, nonparametric alternatives to mean comparison} (Version 3.0). Available online from the CRAN website \url{http://cran.r-project.org/}. \cr \cr
+Rogmann, J. J. (2013). \emph{Ordinal Dominance Statistics (orddom): An R Project for Statistical Computing package to compute ordinal, nonparametric alternatives to mean comparison} (Version 3.1). Available online from the CRAN website \url{http://cran.r-project.org/}. \cr \cr
+\emph{Major changes from orddom version 3.0 to 3.1}
+\itemize{
+ \item{Correction for dmes list names}
+ }
 \emph{Major changes from orddom version 2.0 to 3.0}
 \itemize{
  \item{New function dmes to easily calculate nonparametric effect size measures independently from orddom}
@@ -66,6 +71,7 @@ Feng, D., & Cliff, N. (2004). Monte Carlo Evaluation of Ordinal d with Improved 
 Feng, D. (2007). Robustness and Power of Ordinal d for Paired Data. In Shlomo S. Sawilowsky (Ed.), \emph{Real Data Analysis} (pp. 163-183). Greenwich, CT : Information Age Publishing.\cr \cr
 Grissom, R.J. (1994). Probability of the superior outcome of one treatment over another. \emph{Journal of Applied Psychology, 79}, 314-316.\cr \cr
 Grissom, R.J. & Kim, J.J. (2005). \emph{Effect sizes for research. A broad practical approach}. Mahwah, NJ, USA: Erlbaum.\cr \cr
+Huberty, C. J. & Lowman, L. L. (2000). Group overlap as a basis for effect size. \emph{Educational and Psychological Measurement, 60}, 543-563.\cr\cr
 Kraemer, H.C. &  Kupfer, D.J. (2006). Size of Treatment Effects and Their Importance to Clinical Research and Practice. \emph{Biological Psychiatry, 59}, 990-996. \cr \cr
 McGraw, K.O. & Wong, S.P. (1992). A common language effect size statistic. \emph{Psychological Bulletin, 111}, 361-365.\cr \cr
 Long, J. D., Feng, D., & Cliff, N. (2003). Ordinal analysis of behavioral data. In J. Schinka & W. F. Velicer (eds.), \emph{Research Methods in Psychology. Volume 2 of Handbook of Psychology} (I. B. Weiner, Editor-in-Chief). New York: John Wiley & Sons.\cr \cr

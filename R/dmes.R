@@ -1,6 +1,7 @@
 dmes <- function(x,y) {#Calculation of nonparametric orddom effect sizes
  dom <- dm(x,y)
  RET <- list()
+ nam <- c("nx","ny","PSc","Ac","dc","NNTc","PSw","Aw","dw","NNTw","PSb","Ab","db","NNTb")
  nx  <- length(x)
  ny  <- length(y)
  nxny<- length(dom)
@@ -14,6 +15,6 @@ dmes <- function(x,y) {#Calculation of nonparametric orddom effect sizes
  PSb  <- (sum(dom<0)-sum(diag(dom)<0))/(nxny-nx)
  Ab   <- PSb+(0.5*(sum(dom==0)-sum(diag(dom)==0))/(nxny-nx))
  db   <- PSb-((sum(dom>0)-sum(diag(dom)>0))/(nxny-nx))
- RET <- c(nx,ny,PSc,Ac,dc,(1/dc),PSw,Aw,dw,(1/dw),PSb,Ab,db,(1/db))} else {
- RET <- c(nx,ny,PSc,Ac,dc,(1/dc),PSc,Ac,dc,(1/dc),PSc,Ac,dc,(1/dc))}
+ RET[nam] <- c(nx,ny,PSc,Ac,dc,(1/dc),PSw,Aw,dw,(1/dw),PSb,Ab,db,(1/db))} else {
+ RET[nam] <- c(nx,ny,PSc,Ac,dc,(1/dc),PSc,Ac,dc,(1/dc),PSc,Ac,dc,(1/dc))}
  return(RET)}
